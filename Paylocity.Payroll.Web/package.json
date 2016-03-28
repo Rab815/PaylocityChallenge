@@ -1,0 +1,13 @@
+{
+	"version": "1.0.0",
+	"name": "Paylocity Payroll Application",
+	"private": true,
+  "devDependencies": {
+  },
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "bootstrap": "^3.3.6",
+    "ui-bootstrap" : "^0.0.23" 
+  }
+}

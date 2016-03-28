@@ -1,0 +1,90 @@
+﻿<div>
+    <h2>Dependent For Employee {{dependent.employeeFirstName}} {{dependent.employeeLastName}}</h2>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-details" ng-repeat="dep in dependent.dependents">
+                                <td class="col-xs-push-4">
+                                    <a id="#" href="#"><span ng-bind="dep.firstName"></span></a>
+                                </td>
+                                <td class="col-xs-push-4">
+                                    <span ng-bind="dep.lastName"></span>
+                                </td>
+                                <td>
+                                    <a class="btn" ng-click="dependent.deleteDependent(dep.id)">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Benefit Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="row-details">
+                            <td class="col-xs-push-4">
+                                <span>Salary</span>
+                            </td>
+                            <td class="col-xs-push-4">
+                                <span>2000</span>
+                            </td>
+                        </tr>
+                        <tr class="row-details">
+                            <td class="col-xs-push-4">
+                                <span>Salary</span>
+                            </td>
+                            <td class="col-xs-push-4">
+                                <span>2000</span>
+                            </td>
+                        </tr>
+                        <tr class="row-details" ng-repeat="dep in dependent.dependents">
+                            <td class="col-xs-push-4">
+                                <span>Salary</span>
+                            </td>
+                            <td class="col-xs-push-4">
+                                <span>2000</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h2>Add a dependent to this employee</h2>
+    <form role="form" class="col-sm-6" ng-submit="dependent.saveDependent()" name="dependentForm" novalidate="novalidate">
+        <div class="form-group">
+            <label for="Firstname">First Name: </label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" ng-model="dependent.firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name: </label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" ng-model="dependent.lastName" required>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="dependentForm.$invalid">
+            <span>Save Dependent</span>
+        </button>
+    </form>
+</div>

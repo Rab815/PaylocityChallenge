@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Paylocity Demo</title>
+
+    <!-- This should be bundled and minified -->
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/routing.js"></script>
+    <script src="app/controllers/employeeCtrl.js"></script>
+    <script src="app/services/employeeService.js"></script>
+    <script src="app/controllers/dependentCtrl.js"></script>
+    <script src="app/services/dependentService.js"></script>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/employees">Employees</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="contents">
+            <div ng-view></div>
+        </div>
+
+    </div>
+
+</body>
+</html>
