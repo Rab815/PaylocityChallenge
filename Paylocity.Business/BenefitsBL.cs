@@ -49,6 +49,7 @@ namespace Paylocity.Business
 
             // determine how much per check comes out for the employee
             var employeeBenefitsCostPerPaycheck = empBenfitCost/numChecks;
+            // determine how much comes out per dependant per paycheck
             var dependantsBenefitCostPerPaycheck = depBenefitCost/numChecks;
             
             // round the values
