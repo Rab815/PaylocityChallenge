@@ -40,7 +40,7 @@ namespace Paylocity.Business
             // Get constants from web.config
             var numChecks = GetSetting<int>("NumberOfChecks");
             var empSalaryPerPay = GetSetting<double>("EmployeeSalaryPaycheck");
-            var empBenfitCost = GetSetting<double>("EmployeeyearlyBenefitCost");
+            var empBenfitCost = GetSetting<double>("EmployeeYearlyBenefitCost");
             var depBenefitCost = GetSetting<double>("DependentYearlyBenefitCost");
             var discountPercent = GetSetting<double>("DiscountAmountPercentage");
             var discountNameStart = GetSetting<string>("DiscountNameStart");
