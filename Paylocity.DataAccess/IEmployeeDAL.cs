@@ -12,5 +12,6 @@ namespace Paylocity.DataAccess
         Task<List<EmployeeModel>> GetEmployees(UnitOfWork unitOfWork);
         Task<EmployeeModel> SaveEmployee(UnitOfWork unitOfWork, EmployeeModel model);
         Task<EmployeeModel> GetEmployee(UnitOfWork unitOfWork, int id);
+        Task<bool> DeleteEmployee(UnitOfWork unitOfWork, int id);
     }
 }

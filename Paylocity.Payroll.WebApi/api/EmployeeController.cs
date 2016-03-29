@@ -36,6 +36,12 @@ namespace Paylocity.Payroll.WebApi.Controllers
             return await _employeeService.GetEmployee(id);
         }
 
+        [Route("employee/{id}")]
+        [HttpDelete]
+        public async Task<bool> DeleteEmployee(int id)
+        {
+            return await _employeeService.DeleteEmployee(id);
+        }
 
         [Route("employee")]
         [HttpPost]

@@ -12,5 +12,7 @@ namespace Paylocity.Business
         Task<EmployeeModel> GetEmployee(int id);
         Task<List<EmployeeModel>> GetEmployees();
         Task<EmployeeModel> SaveEmployee(EmployeeModel employee);
+        Task<bool> DeleteEmployee(int id);
+
     }
 }

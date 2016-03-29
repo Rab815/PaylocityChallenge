@@ -34,6 +34,16 @@ namespace Paylocity.Business
             }
         }
 
+        public async Task<bool> DeleteEmployee(int id)
+        {
+            using (var unitOfWork = _unitOfWorkFactory.CreateUnitOfWork())
+            {
+                var isDeleted = await _employeeDal.DeleteEmployee(unitOfWork, id);
+                await unitOfWork.Complete();
+                return isDeleted;
+            }
+        }
+
         public async Task<EmployeeModel> SaveEmployee(EmployeeModel employee)
         {
             using (var unitOfWork = _unitOfWorkFactory.CreateUnitOfWork())

@@ -5,9 +5,9 @@
         .module('app')
         .controller('DependentCtrl', dependentCtrl);
 
-    dependentCtrl.$inject = ['$location', 'employeeService', 'dependentService', '$routeParams'];
+    dependentCtrl.$inject = ['$location', 'employeeService', 'dependentService', 'benefitsService', '$routeParams'];
 
-    function dependentCtrl($location, employeeService, dependentService, $routeParams) {
+    function dependentCtrl($location, employeeService, dependentService, benefitsService, $routeParams) {
         /* jshint validthis:true */
 
         var vm = angular.extend(this, {
@@ -23,12 +23,14 @@
         vm.employeeFirstName = "";
         vm.employeeLastName = "";
         vm.employeeId = $routeParams.employeeId;
+        vm.benefits = {};
         activate();
 
         function activate() {
             // call functions here to intialize screen or other vars
             getEmployeeDetails();
             getDependents();
+            getBenefits();
         }
 
         function getEmployeeDetails() {
@@ -52,13 +54,19 @@
             dependentService.getDependents(vm.employeeId)
                 .then(function (response) {
                     vm.dependents = response;
+                    getBenefits();
                 });
         }
 
+        function getBenefits() {
+            benefitsService.getBenefits(vm.employeeId)
+                .then(function (response) {
+                    vm.benefits = response;
+                });
+        }
 
         function saveDependent() {
             // set up a new employee
-            debugger;
             var newDependent = {
                 employeeId: vm.employeeId,
                 firstName: vm.firstName,
@@ -66,6 +74,7 @@
             }
             dependentService.saveDependent(newDependent)
                 .then(function (response) {
+                    debugger;
                     getDependents();
                     vm.firstName = "";
                     vm.lastName = "";

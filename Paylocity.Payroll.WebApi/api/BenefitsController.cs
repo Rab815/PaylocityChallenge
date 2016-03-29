@@ -10,7 +10,7 @@ using Paylocity.Business;
 
 namespace Paylocity.Payroll.WebApi.api
 {
-    [System.Web.Http.RoutePrefix("api/v1")]
+    [RoutePrefix("api/v1")]
     [EnableCors("http://localhost:10086", "*", "*")]
     public class BenefitsController : ApiController
     {

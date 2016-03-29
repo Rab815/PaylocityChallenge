@@ -21,6 +21,17 @@ namespace Paylocity.DataAccess
             }).ToList();
         }
 
+        public async Task<bool> DeleteEmployee(UnitOfWork unitOfWork, int id)
+        {
+            var entity = await unitOfWork.PayrollContext.Employees.FirstOrDefaultAsync(c => c.Id == id);
+            if (entity != null)
+            {
+                unitOfWork.PayrollContext.Employees.Remove(entity);
+                await unitOfWork.PayrollContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
 
         public async Task<EmployeeModel> SaveEmployee(UnitOfWork unitOfWork, EmployeeModel model)
         {

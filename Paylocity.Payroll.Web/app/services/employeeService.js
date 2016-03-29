@@ -11,7 +11,8 @@
         var service = {
             getEmployees: getEmployees,
             getEmployee: getEmployee,
-            saveEmployee: saveEmployee
+            saveEmployee: saveEmployee,
+            deleteEmployee: deleteEmployee
         };
 
         return service;
@@ -27,6 +28,14 @@
         function getEmployee(userId) {
             return $http
                 .get("http://localhost:1837/api/v1/employee/" + userId)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function deleteEmployee(employeeId) {
+            return $http
+                .delete("http://localhost:1837/api/v1/employee/" + employeeId)
                 .then(function (response) {
                     return response.data;
                 });

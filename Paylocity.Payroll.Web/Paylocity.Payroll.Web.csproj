@@ -98,6 +98,7 @@
     <Content Include="app\controllers\dependentCtrl.js" />
     <Content Include="app\controllers\employeeCtrl.js" />
     <Content Include="app\routing.js" />
+    <Content Include="app\services\benefitsService.js" />
     <Content Include="app\services\dependentService.js" />
     <Content Include="app\services\employeeService.js" />
     <Content Include="index.html" />

@@ -68,7 +68,6 @@ namespace Paylocity.DataAccess
             if (entity != null)
             {
                 unitOfWork.PayrollContext.Dependents.Remove(entity);
-                unitOfWork.PayrollContext.Dependents.Remove(entity);
                 await unitOfWork.PayrollContext.SaveChangesAsync();
                 return true;
             }

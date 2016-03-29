@@ -34,7 +34,6 @@
         }
 
         function deleteDependent(dependentId) {
-            debugger;
             return $http
                 .delete("http://localhost:1837/api/v1/dependent/" + dependentId)
                 .then(function (response) {

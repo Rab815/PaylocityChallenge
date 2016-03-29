@@ -12,7 +12,8 @@
         // public functions 
         var vm = angular.extend(this, {
             getEmployees: getEmployees,
-            saveEmployee: saveEmployee
+            saveEmployee: saveEmployee,
+            deleteEmployee: deleteEmployee
         });
 
         vm.title = 'Employee List';
@@ -31,6 +32,13 @@
             employeeService.getEmployees()
                 .then(function(response) {
                     vm.employees = response;
+                });
+        }
+
+        function deleteEmployee(employeeId) {
+            employeeService.deleteEmployee(employeeId)
+                .then(function (response) {
+                    getEmployees();
                 });
         }
 
