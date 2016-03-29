@@ -1,6 +1,5 @@
 {
 	"version": "1.0.0",
-	"name": "Paylocity Payroll Application",
 	"private": true,
   "devDependencies": {
   },
