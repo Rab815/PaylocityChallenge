@@ -54,5 +54,15 @@ namespace Paylocity.Business
                 return isDeleted;
             }
         }
+
+        public async Task<bool> DeleteDependentsByEmployeeId(int employeeId)
+        {
+            using (var unitOfWork = _unitOfWorkFactory.CreateUnitOfWork())
+            {
+                var isDeleted = await _dependentDal.DeleteDependentsByEmployeeId(unitOfWork, employeeId);
+                await unitOfWork.Complete();
+                return isDeleted;
+            }
+        }
     }
 }

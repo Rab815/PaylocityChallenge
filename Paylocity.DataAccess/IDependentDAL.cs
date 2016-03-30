@@ -13,5 +13,6 @@ namespace Paylocity.DataAccess
         Task<DependentModel> SaveDependent(UnitOfWork unitOfWork, DependentModel model);
         Task<DependentModel> GetDependent(UnitOfWork unitOfWork, int id);
         Task<bool> DeleteDependent(UnitOfWork unitOfWork, int id);
+        Task<bool> DeleteDependentsByEmployeeId(UnitOfWork unitOfWork, int employeeId);
     }
 }

@@ -8,26 +8,27 @@
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr class="row-details" ng-repeat="dep in dependent.dependents">
-                                <td class="col-xs-push-4">
-                                    <span ng-bind="dep.firstName"></span>
-                                </td>
-                                <td class="col-xs-push-4">
-                                    <span ng-bind="dep.lastName"></span>
-                                </td>
-                                <td>
-                                    <a class="btn" ng-click="dependent.deleteDependent(dep.id)">Delete</a>
-                                </td>
-                            </tr>
+                        <tr class="row-details" ng-repeat="dep in dependent.dependents">
+                            <td class="col-xs-push-4">
+                                <span ng-bind="dep.firstName"></span>
+                            </td>
+                            <td class="col-xs-push-4">
+                                <span ng-bind="dep.lastName"></span>
+                            </td>
+                            <td>
+                                <a class="btn" ng-click="dependent.deleteDependent(dep.id)">Delete</a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
+                    <span ng-show="dependent.loading"><i class="fa fa-spin fa-spinner"></i> Loading records for dependents</span>
                 </div>
             </div>
             <div class="col-md-6">

@@ -20,7 +20,7 @@
         vm.employees = [];
         vm.firstName = "";
         vm.lastName = "";
-
+        vm.loading = false;
         activate();
 
         function activate() {
@@ -29,17 +29,21 @@
         }
 
         function getEmployees() {
+            vm.loading = true;
             employeeService.getEmployees()
                 .then(function(response) {
                     vm.employees = response;
+                    vm.loading = false;
                 });
         }
 
         function deleteEmployee(employeeId) {
-            employeeService.deleteEmployee(employeeId)
-                .then(function (response) {
-                    getEmployees();
-                });
+            if (confirm("Are you sure you want to delete this employee?")) { 
+                employeeService.deleteEmployee(employeeId)
+                    .then(function(response) {
+                        getEmployees();
+                    });
+            }
         }
 
 

@@ -13,5 +13,7 @@ namespace Paylocity.Business
         Task<List<DependentModel>> GetDependents(int employeeId);
         Task<DependentModel> SaveDependent(DependentModel employee);
         Task<bool> DeleteDependent(int id);
+        Task<bool> DeleteDependentsByEmployeeId(int employeeId);
+
     }
 }

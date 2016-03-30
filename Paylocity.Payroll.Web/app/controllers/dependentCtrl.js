@@ -24,13 +24,13 @@
         vm.employeeLastName = "";
         vm.employeeId = $routeParams.employeeId;
         vm.benefits = {};
+        vm.loading = false;
         activate();
 
         function activate() {
             // call functions here to intialize screen or other vars
             getEmployeeDetails();
             getDependents();
-            getBenefits();
         }
 
         function getEmployeeDetails() {
@@ -50,10 +50,11 @@
         }
 
         function getDependents() {
-            
+            vm.loading = true;
             dependentService.getDependents(vm.employeeId)
                 .then(function (response) {
                     vm.dependents = response;
+                    vm.loading = false;
                     getBenefits();
                 });
         }
@@ -74,7 +75,6 @@
             }
             dependentService.saveDependent(newDependent)
                 .then(function (response) {
-                    debugger;
                     getDependents();
                     vm.firstName = "";
                     vm.lastName = "";

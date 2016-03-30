@@ -74,6 +74,19 @@ namespace Paylocity.DataAccess
             return false;
         }
 
+        public async Task<bool> DeleteDependentsByEmployeeId(UnitOfWork unitOfWork, int employeeId)
+        {
+            var entities = await unitOfWork.PayrollContext.Dependents.Where(c => c.EmployeeId== employeeId).ToListAsync();
+            if (entities != null)
+            {
+                foreach(var ent in entities)
+                    unitOfWork.PayrollContext.Dependents.Remove(ent);
+                await unitOfWork.PayrollContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
         public async Task<DependentModel> GetDependent(UnitOfWork unitOfWork, int id)
         {
             var entity = await unitOfWork.PayrollContext.Dependents.FirstOrDefaultAsync(c => c.Id == id);

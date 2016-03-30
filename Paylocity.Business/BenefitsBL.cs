@@ -68,7 +68,10 @@ namespace Paylocity.Business
             // how many dependents get a discount
             var discountedDependentsCount = dependents.Count(d => d.FirstName.StartsWith(discountNameStart));
             
-            var discountedDependantsBenefitCostPerPaycheck = dependantsBenefitCostPerPaycheck - ((dependantsBenefitCostPerPaycheck * (discountPercent / 100)) * discountedDependentsCount);
+            // determine total discounted amount based on eligible dependents
+            var discountedDependantsBenefitCostPerPaycheck = (dependantsBenefitCostPerPaycheck - (dependantsBenefitCostPerPaycheck * (discountPercent / 100))) * discountedDependentsCount;
+            
+            // determine total amount based on discount non eligible dependents
             var nondiscountedDependantBenefitCostPerPaycheck = (depCount - discountedDependentsCount) * dependantsBenefitCostPerPaycheck;
 
             // calculate the total discount
@@ -88,7 +91,7 @@ namespace Paylocity.Business
         }
 
         // Normally this would be a part of a utility class... here for brevity
-        public static T GetSetting<T>(string key, T defaultValue = default(T)) where T : IConvertible
+        private T GetSetting<T>(string key, T defaultValue = default(T)) where T : IConvertible
         {
             string val = ConfigurationManager.AppSettings[key] ?? "";
             T result = defaultValue;
