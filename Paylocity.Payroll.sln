@@ -10,9 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Business", "_Business", "{7F5ED6E3-AEED-4E99-9D90-76EFB395973B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_DataAccess", "_DataAccess", "{9FEDD9D1-1DC1-4AF7-BDBD-59645C0FB203}"
-	ProjectSection(SolutionItems) = preProject
-		Paylocity.Payroll.Web\node_modules\bootstrap\dist\css\bootstrap.min.css = Paylocity.Payroll.Web\node_modules\bootstrap\dist\css\bootstrap.min.css
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shared", "_Shared", "{47CA9CAB-E7B6-484E-BA61-D954E36EF3A5}"
 EndProject

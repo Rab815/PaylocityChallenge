@@ -1,27 +1,39 @@
-﻿angular.module('app').service('modalService', ['$uibModal',
-    function ($uibModal) {
+﻿(function() {
+    'use strict';
 
-        var modalDefaults = {
-            backdrop: true,
-            keyboard: true,
-            modalFade: true,
-            templateUrl: '/partials/templates/modal.html'
-        };
+    angular.module('app').service('modalService', modalService);
 
-        var modalOptions = {
-            closeButtonText: 'Close',
-            actionButtonText: 'OK',
-            headerText: 'Confirm',
-            bodyText: 'Perform this action?'
-        };
+    modalService.$inject = ['$uibModal'];
 
-        this.showModal = function (customModalDefaults, customModalOptions) {
+    function modalService($uibModal) {
+        var service = {
+            showModal: showModal,
+            show: show
+        }
+
+        return service;
+
+        function showModal(customModalDefaults, customModalOptions) {
             if (!customModalDefaults) customModalDefaults = {};
             customModalDefaults.backdrop = 'static';
             return this.show(customModalDefaults, customModalOptions);
-        };
+        }
 
-        this.show = function (customModalDefaults, customModalOptions) {
+        function show(customModalDefaults, customModalOptions) {
+            var modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: '/partials/templates/modal.html'
+            };
+
+            var modalOptions = {
+                closeButtonText: 'Close',
+                actionButtonText: 'OK',
+                headerText: 'Confirm',
+                bodyText: 'Perform this action?'
+            };
+
             //Create temp objects to work with since we're in a singleton service
             var tempModalDefaults = {};
             var tempModalOptions = {};
@@ -47,5 +59,5 @@
             return $uibModal.open(tempModalDefaults).result; 
 
         };
-
-    }]);
+    }
+})();
