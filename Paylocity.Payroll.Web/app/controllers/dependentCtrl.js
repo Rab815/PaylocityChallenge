@@ -43,10 +43,12 @@
         }
 
         function deleteDependent(dependentId) {
-            dependentService.deleteDependent(dependentId)
-                .then(function (response) {
-                    getDependents(vm.employeeId);
-                });
+            if (confirm("Are you sure you want to delete this dependent?")) {
+                dependentService.deleteDependent(dependentId)
+                    .then(function(response) {
+                        getDependents(vm.employeeId);
+                    });
+            }
         }
 
         function getDependents() {
