@@ -5,9 +5,9 @@
         .module('app')
         .controller('DependentCtrl', dependentCtrl);
 
-    dependentCtrl.$inject = ['$location', 'employeeService', 'dependentService', 'benefitsService', '$routeParams'];
+    dependentCtrl.$inject = ['$location', 'employeeService', 'dependentService', 'benefitsService', '$routeParams', 'modalService'];
 
-    function dependentCtrl($location, employeeService, dependentService, benefitsService, $routeParams) {
+    function dependentCtrl($location, employeeService, dependentService, benefitsService, $routeParams, $modal) {
         /* jshint validthis:true */
 
         var vm = angular.extend(this, {
@@ -34,7 +34,6 @@
         }
 
         function getEmployeeDetails() {
-            var employeeId = $routeParams.employeeId;
             employeeService.getEmployee(vm.employeeId)
                 .then(function (response) {
                     vm.employeeFirstName = response.firstName;
@@ -43,12 +42,18 @@
         }
 
         function deleteDependent(dependentId) {
-            if (confirm("Are you sure you want to delete this dependent?")) {
-                dependentService.deleteDependent(dependentId)
-                    .then(function(response) {
-                        getDependents(vm.employeeId);
-                    });
-            }
+            var modalOptions = {
+                closeButtonText: 'No',
+                actionButtonText: 'Yes',
+                bodyText: 'Are you sure you want to delete this dependent?'
+            };
+
+            $modal.showModal({}, modalOptions).then(function(result) {
+                    dependentService.deleteDependent(dependentId)
+                        .then(function(response) {
+                            getDependents(vm.employeeId);
+                        });               
+            });
         }
 
         function getDependents() {

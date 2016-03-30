@@ -5,9 +5,9 @@
         .module('app')
         .controller('EmployeeCtrl', employeeCtrl);
 
-    employeeCtrl.$inject = ['$location', 'employeeService'];
+    employeeCtrl.$inject = ['$location', 'employeeService', 'modalService'];
 
-    function employeeCtrl($location, employeeService) {
+    function employeeCtrl($location, employeeService, $modal) {
         /* jshint validthis:true */
         // public functions 
         var vm = angular.extend(this, {
@@ -27,7 +27,7 @@
             // call functions here to intialize screen or other vars
             getEmployees();
         }
-
+        
         function getEmployees() {
             vm.loading = true;
             employeeService.getEmployees()
@@ -38,12 +38,19 @@
         }
 
         function deleteEmployee(employeeId) {
-            if (confirm("Are you sure you want to delete this employee?")) { 
-                employeeService.deleteEmployee(employeeId)
-                    .then(function(response) {
-                        getEmployees();
-                    });
-            }
+            var modalOptions = {
+                closeButtonText: 'No',
+                actionButtonText: 'Yes',
+                bodyText: 'Are you sure you want to delete this employee?'
+            };
+
+            $modal.showModal({}, modalOptions)
+                .then(function(result) {
+                    employeeService.deleteEmployee(employeeId)
+                        .then(function(response) {
+                            getEmployees();
+                        });
+                });
         }
 
 
